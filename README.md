@@ -39,7 +39,7 @@ This separation means each layer has one clear responsibility. If the database c
 The app uses two separate objects for the notification — `NotificationRequest` and `NotificationResponse` — instead of using the `Notification` entity directly.
 
 - **`NotificationRequest`** is what the caller sends in. It only contains the fields the caller is allowed to set (`type`, `recipient`, `message`). Fields like `id`, `status`, and timestamps are not exposed — the caller should not be able to set those.
-- **`NotificationResponse`** is what gets sent back. It controls exactly what the caller sees — nothing more, nothing less.
+- **`NotificationResponse`** is what gets sent back. It controls exactly what the caller sees
 
 If the internal `Notification` entity were exposed directly, any change to the database schema could accidentally break the API contract. DTOs act as a buffer between the internal data model and the outside world.
 
@@ -66,7 +66,7 @@ Request received → PENDING → dispatch attempted → SENT
                                                 → FAILED
 ```
 
-Every notification is persisted to the database as `PENDING` before dispatch is attempted. This is intentional — it guarantees there is always a record of every request, even if the application crashes mid-dispatch. The `GET /v1/notifications/{id}` endpoint exists specifically so callers can check the final status after the fact.
+Every notification is persisted to the database as `PENDING` before dispatch is attempted. This is intentional, it guarantees there is always a record of every request, even if the application crashes mid-dispatch. The `GET /v1/notifications/{id}` endpoint exists specifically so callers can check the final status after the fact.
 
 ---
 
@@ -97,7 +97,7 @@ curl http://localhost:8080/v1/notifications/{id}
 
 ### On Windows (PowerShell)
 
-Use `Invoke-RestMethod` — PowerShell's built-in HTTP client. Do not use `curl` in PowerShell as it behaves differently.
+Use `Invoke-RestMethod`, PowerShell's built-in HTTP client. Do not use `curl` in PowerShell as it behaves differently.
 
 **Send an EMAIL notification:**
 ```powershell
