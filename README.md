@@ -36,7 +36,7 @@ This separation means each layer has one clear responsibility. If the database c
 
 ### Why DTOs?
 
-The app uses two separate objects for the notification — `NotificationRequest` and `NotificationResponse` — instead of using the `Notification` entity directly.
+The app uses two separate objects for the notification: `NotificationRequest` and `NotificationResponse`: instead of using the `Notification` entity directly.
 
 - **`NotificationRequest`** is what the caller sends in. It only contains the fields the caller is allowed to set (`type`, `recipient`, `message`). Fields like `id`, `status`, and timestamps are not exposed — the caller should not be able to set those.
 - **`NotificationResponse`** is what gets sent back. It controls exactly what the caller sees
