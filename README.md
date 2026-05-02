@@ -26,9 +26,9 @@ Controller  →  Service  →  Repository
 (HTTP)         (Logic)      (Database)
 ```
 
-- **Controller** — the entry point. Its only job is to receive HTTP requests, pass them to the service, and return the response. It has no business logic.
-- **Service** — where all the decisions are made. It validates input, saves to the database, calls the provider, and updates the status.
-- **Repository** — handles all database interaction. By extending Spring's `JpaRepository`.
+- **Controller**: the entry point. Its only job is to receive HTTP requests, pass them to the service, and return the response. It has no business logic.
+- **Service**: where all the decisions are made. It validates input, saves to the database, calls the provider, and updates the status.
+- **Repository**: handles all database interaction. By extending Spring's `JpaRepository`.
 
 This separation means each layer has one clear responsibility. If the database changes, only the repository layer is affected. If the business rules change, only the service layer is affected.
 
