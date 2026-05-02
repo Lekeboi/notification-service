@@ -38,7 +38,7 @@ This separation means each layer has one clear responsibility. If the database c
 
 The app uses two separate objects for the notification: `NotificationRequest` and `NotificationResponse`: instead of using the `Notification` entity directly.
 
-- **`NotificationRequest`** is what the caller sends in. It only contains the fields the caller is allowed to set (`type`, `recipient`, `message`). Fields like `id`, `status`, and timestamps are not exposed — the caller should not be able to set those.
+- **`NotificationRequest`** is what the caller sends in. It only contains the fields the caller is allowed to set (`type`, `recipient`, `message`). Fields like `id`, `status`, and timestamps are not exposed.
 - **`NotificationResponse`** is what gets sent back. It controls exactly what the caller sees
 
 If the internal `Notification` entity were exposed directly, any change to the database schema could accidentally break the API contract. DTOs act as a buffer between the internal data model and the outside world.
